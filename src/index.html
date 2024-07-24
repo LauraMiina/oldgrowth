@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>Mapbox Storytelling</title>
+    <title>Old-growth forests</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/mapbox/assembly/publisher-staging/src/svgs/mapbox.svg">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
@@ -48,18 +48,43 @@
             margin: auto;
             width: 100%;
             position: relative;
-            z-index: 5;
+            z-index: 4;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        #header h1, #header h2, #header p {
+        #header h1 {
             margin: 0;
-            padding: 2vh 2vw;
+            padding: 0;
             text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #184946;
+            line-height: 1.1; /* Adjust line height */
+        }
+        #header h2 {
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 1.5em;
+            color: #555;
+            line-height: 1;
+            font-style: italic;
+            font-weight: normal;
+        }
+        #header p {
+            margin: 0;
+            padding: 3px 0;
+            text-align: center;
+            font-size: 1em;
+            color: #888;
+            line-height: 1; /* Adjust line height */
         }
         #footer {
             width: 100%;
-            min-height: 5vh;
-            padding-top: 2vh;
-            padding-bottom: 2vh;
+            min-height: 3vh;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
             text-align: center;
             line-height: 25px;
             font-size: 13px;
@@ -90,17 +115,16 @@
             margin: auto;
         }
         .light {
-            color: #444;
+            color: #184946;
             background-color: #fafafa;
         }
         .dark {
             color: #fafafa;
-            background-color: #444;
+            background-color: #184946;
         }
         .step {
-            padding-bottom: 50vh;
-            /* margin-bottom: 10vh; */
-            opacity: 0.25;
+            padding-bottom: 100vh;
+            opacity: 0.4;
         }
         .step.active {
             opacity: 0.9;
@@ -280,7 +304,7 @@ var map = new mapboxgl.Map({
     projection: config.projection
 });
 
-// Create a inset map if enabled in config.js
+// Create an inset map if enabled in config.js
 if (config.inset) {
  var insetMap = new mapboxgl.Map({
     container: 'mapInset', // container id
@@ -305,8 +329,15 @@ if (config.showMarkers) {
 // instantiate the scrollama
 var scroller = scrollama();
 
-
 map.on("load", function() {
+    // Hide all specified layers initially
+    ['matureoldgrowth-new', 'projectlisting-cubelm'].forEach(function(layerID) {
+        map.setLayoutProperty(layerID, 'visibility', 'none');
+    });
+
+    // Initial visible layer
+    map.setLayoutProperty('oldgrowth', 'visibility', 'visible');
+
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
             'type': 'raster-dem',
@@ -331,8 +362,9 @@ map.on("load", function() {
 
     // As the map moves, grab and update bounds in inset map.
     if (config.inset) {
-    map.on('move', getInsetBounds);
+        map.on('move', getInsetBounds);
     }
+
     // setup the instance, pass callback functions
     scroller
     .setup({
@@ -347,49 +379,21 @@ map.on("load", function() {
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
-        // Incase you do not want to have a dynamic inset map,
-        // rather want to keep it a static view but still change the
-        // bbox as main map move: comment out the below if section.
-        if (config.inset) {
-          if (chapter.location.zoom < 5) {
-            insetMap.flyTo({center: chapter.location.center, zoom: 0});
-          }
-          else {
-            insetMap.flyTo({center: chapter.location.center, zoom: 3});
-          }
-        }
-        if (config.showMarkers) {
-            marker.setLngLat(chapter.location.center);
-        }
-        if (chapter.onChapterEnter.length > 0) {
-            chapter.onChapterEnter.forEach(setLayerOpacity);
-        }
+        // Set the visibility for layers
+        chapter.onChapterEnter.forEach(function(layer) {
+            map.setLayoutProperty(layer.layer, 'visibility', layer.visibility);
+        });
+
         if (chapter.callback) {
             window[chapter.callback]();
-        }
-        if (chapter.rotateAnimation) {
-            map.once('moveend', () => {
-                const rotateNumber = map.getBearing();
-                map.rotateTo(rotateNumber + 180, {
-                    duration: 30000, easing: function (t) {
-                        return t;
-                    }
-                });
-            });
-        }
-        if (config.auto) {
-             var next_chapter = (current_chapter + 1) % config.chapters.length;
-             map.once('moveend', () => {
-                 document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
-             });
         }
     })
     .onStepExit(response => {
         var chapter = config.chapters.find(chap => chap.id === response.element.id);
         response.element.classList.remove('active');
-        if (chapter.onChapterExit.length > 0) {
-            chapter.onChapterExit.forEach(setLayerOpacity);
-        }
+        chapter.onChapterExit.forEach(function(layer) {
+            map.setLayoutProperty(layer.layer, 'visibility', layer.visibility);
+        });
     });
 
 
@@ -400,51 +404,51 @@ map.on("load", function() {
 
 //Helper functions for insetmap
 function getInsetBounds() {
-            let bounds = map.getBounds();
+    let bounds = map.getBounds();
 
-            let boundsJson = {
-                "type": "FeatureCollection",
-                "features": [{
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates": [
-                            [
-                                [
-                                    bounds._sw.lng,
-                                    bounds._sw.lat
-                                ],
-                                [
-                                    bounds._ne.lng,
-                                    bounds._sw.lat
-                                ],
-                                [
-                                    bounds._ne.lng,
-                                    bounds._ne.lat
-                                ],
-                                [
-                                    bounds._sw.lng,
-                                    bounds._ne.lat
-                                ],
-                                [
-                                    bounds._sw.lng,
-                                    bounds._sw.lat
-                                ]
-                            ]
+    let boundsJson = {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            bounds._sw.lng,
+                            bounds._sw.lat
+                        ],
+                        [
+                            bounds._ne.lng,
+                            bounds._sw.lat
+                        ],
+                        [
+                            bounds._ne.lng,
+                            bounds._ne.lat
+                        ],
+                        [
+                            bounds._sw.lng,
+                            bounds._ne.lat
+                        ],
+                        [
+                            bounds._sw.lng,
+                            bounds._sw.lat
                         ]
-                    }
-                }]
+                    ]
+                ]
             }
+        }]
+    }
 
-            if (initLoad) {
-                addInsetLayer(boundsJson);
-                initLoad = false;
-            } else {
-                updateInsetLayer(boundsJson);
-            }
+    if (initLoad) {
+        addInsetLayer(boundsJson);
+        initLoad = false;
+    } else {
+        updateInsetLayer(boundsJson);
+    }
 
-        }
+}
 
 function addInsetLayer(bounds) {
     insetMap.addSource('boundsSource', {
@@ -462,7 +466,7 @@ function addInsetLayer(bounds) {
             'fill-opacity': 0.2
         }
     });
-    // // Add a black outline around the polygon.
+    // Add a black outline around the polygon.
     insetMap.addLayer({
         'id': 'outlineLayer',
         'type': 'line',
@@ -478,8 +482,6 @@ function addInsetLayer(bounds) {
 function updateInsetLayer(bounds) {
     insetMap.getSource('boundsSource').setData(bounds);
 }
-
-
 
 // setup resize event
 window.addEventListener('resize', scroller.resize);
