@@ -17,16 +17,15 @@ var config = {
     chapters: [
         {
             id: 'slug-style-id',
-            alignment: 'right',
+            alignment: 'left',
             hidden: false,
             title: 'Historic counting of the trees',
-            description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. In this map you can see all the firesheds that have these old forests. The darker the colors, the more old woods the area holds.',
+            description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. The inventory was done as part of an executive order by President Biden´s administration in 2022 to “conserve America’s mature and old-growth forests on Federal lands”.  In this map you can see all the firesheds that have these old forests. The darker the colors, the more old woods the area holds.',
             location: {
-                center: [-103.771744, 38.585347],
-                zoom: 4.3,
-                pitch: 20,
-                bearing: 0,
-                speed: 2, // make the flying slow
+                center: [-85.053290, 37.920008],
+                zoom: 4,
+                pitch: 30,
+                bearing: -13.2,
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -49,16 +48,17 @@ var config = {
         },
         {
             id: 'second-identifier',
-            alignment: 'left',
+            alignment: 'right',
             hidden: false,
             title: 'It used to be a billion acres',
           //  image: './path/to/image/source.png',
             description: 'From the 193 million acres of federal forests, around 18 percent is deemed to be old-growth. That would mean 33 million acres, roughly three percent of the billion acres of primary forest that once covered the country.',
             location: {
-                center: [-85.053290, 37.920008],
-                zoom: 5,
-                pitch: 30,
-                bearing: -13.2,
+                center: [-103.771744, 38.585347],
+                zoom: 4.3,
+                pitch: 20,
+                bearing: 0,
+                speed: 2, // make the flying slow
                 // flyTo additional controls-
                 // These options control the flight curve, making it move
                 // slowly and zoom out almost completely before starting
@@ -114,39 +114,6 @@ var config = {
                 {
                     layer: 'oldgrowth',
                     visibility: 'visible'
-                }
-            ],
-            onChapterExit: []
-        },
-        {
-            id: 'fourth-chapter',
-            alignment: 'right',
-            hidden: false,
-            title: 'Not quite old-growth',
-          //  image: './path/to/image/source.png',
-            description: 'Mature forest means that the forests are about to be reaching old-growth status. The inventory estimates there are around 80 million acres of mature forest left, which represents around 44 percent of the federally managed woods.',
-            location: {
-                center: [-96.405291, 38.788153],
-                zoom: 4,
-                pitch: 20,
-                bearing: 0,
-                speed: 1
-            },
-            mapAnimation: 'flyTo',
-            rotateAnimation: false,
-            callback: '',
-            onChapterEnter: [
-                {
-                    layer: 'matureoldgrowth-new',
-                    visibility: 'visible'
-                },
-                {
-                    layer: 'projectlisting-cubelm',
-                    visibility: 'none'
-                },
-                {
-                    layer: 'oldgrowth',
-                    visibility: 'none'
                 }
             ],
             onChapterExit: []
