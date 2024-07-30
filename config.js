@@ -36,7 +36,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projectlisting-cubelm',
+                    layer: 'projects',
                     visibility: 'none'
                 },
                 {
@@ -108,7 +108,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projectlisting-cubelm',
+                    layer: 'projects',
                     visibility: 'none'
                 },
                 {
@@ -141,7 +141,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projectlisting-cubelm',
+                    layer: 'projects',
                     visibility: 'visible'
                 },
                 {
@@ -174,7 +174,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projectlisting-cubelm',
+                    layer: 'projects',
                     visibility: 'visible'
                 },
                 {
