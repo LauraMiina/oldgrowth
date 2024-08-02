@@ -20,7 +20,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Historic counting of the trees',
-            image: '/Users/laura.kukkonen/Documents/oldgrowth_storytelling/oldgrowth/src/images/white-noheader-old-growth.png',
+            image: 'white-noheader-old-growth.png',
             description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. The inventory was done as part of an executive order by President Biden´s administration in 2022 to “conserve America’s mature and old-growth forests on Federal lands”.  In this map you can see all the firesheds that have these old forests. The darker the colors, the more old woods the area holds.',
             location: {
                 center: [-85.053290, 37.920008],
