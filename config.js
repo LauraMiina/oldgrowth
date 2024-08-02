@@ -20,7 +20,6 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Historic counting of the trees',
-            image: 'white-noheader-old-growth.png',
             description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. The inventory was done as part of an executive order by President Biden´s administration in 2022 to “conserve America’s mature and old-growth forests on Federal lands”.  In this map you can see all the firesheds that have these old forests. The darker the colors, the more old woods the area holds.',
             location: {
                 center: [-85.053290, 37.920008],
@@ -52,7 +51,7 @@ var config = {
             alignment: 'right',
             hidden: false,
             title: 'It used to be a billion acres',
-          //  image: './path/to/image/source.png',
+            image: 'white-noheader-old-growth.png',
             description: 'From the 193 million acres of federal forests, around 18 percent is deemed to be old-growth. That would mean 33 million acres, roughly three percent of the billion acres of primary forest that once covered the country.',
             location: {
                 center: [-103.771744, 38.585347],
