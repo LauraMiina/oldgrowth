@@ -13,7 +13,7 @@ var config = {
    // title: 'Fight for the Wilderness',
   //  subtitle: 'Where the oldest forest are a battlefield between environmentalists and loggers.',
    // byline: 'By Laura Kukkonen',
-    footer: 'Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.',
+   // footer: 'Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.',
     chapters: [
         {
             id: 'slug-style-id',
