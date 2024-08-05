@@ -75,7 +75,7 @@ var config = {
                 visibility: 'none'
             },
             {
-                layer: 'projectlisting-cubelm',
+                layer: 'projects2',
                 visibility: 'none'
             },
             {
