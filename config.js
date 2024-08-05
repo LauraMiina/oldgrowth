@@ -36,7 +36,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projects_new',
+                    layer: 'projects-new',
                     visibility: 'none'
                 },
                 {
@@ -75,7 +75,7 @@ var config = {
                 visibility: 'none'
             },
             {
-                layer: 'projects_new',
+                layer: 'projects-new',
                 visibility: 'none'
             },
             {
@@ -108,7 +108,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projects_new',
+                    layer: 'projects-new',
                     visibility: 'none'
                 },
                 {
@@ -141,7 +141,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projects_new',
+                    layer: 'projects-new',
                     visibility: 'visible'
                 },
                 {
@@ -174,7 +174,7 @@ var config = {
                     visibility: 'none'
                 },
                 {
-                    layer: 'projects_new',
+                    layer: 'projects-new',
                     visibility: 'visible'
                 },
                 {
