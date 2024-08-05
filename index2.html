@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var scroller = scrollama();
 
     map.on("load", function() {
-        ['matureoldgrowth-new', 'projects-new'].forEach(function(layerID) {
+        ['matureoldgrowth-new', 'projects'].forEach(function(layerID) {
             map.setLayoutProperty(layerID, 'visibility', 'none');
         });
 
