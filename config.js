@@ -17,15 +17,15 @@ var config = {
     chapters: [
         {
             id: 'slug-style-id',
-            alignment: 'left',
+            alignment: 'centre',
             hidden: false,
             title: 'Historic counting of the trees',
             description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. The inventory was done as part of an executive order by President Biden´s administration in 2022 to “conserve America’s mature and old-growth forests on Federal lands”.  In this map you can see all the firesheds that have these old forests. The darker the colors, the more old woods the area holds.',
             location: {
-                center: [-85.053290, 37.920008],
-                zoom: 4,
+                center: [-94.786879, 35.975403],
+                zoom: 4.2,
                 pitch: 30,
-                bearing: -13.2,
+                bearing: -10,
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -57,7 +57,7 @@ var config = {
                 center: [-103.771744, 38.585347],
                 zoom: 4.3,
                 pitch: 20,
-                bearing: 0,
+                bearing: -5,
                 speed: 2, // make the flying slow
                 // flyTo additional controls-
                 // These options control the flight curve, making it move
@@ -127,7 +127,7 @@ var config = {
             description: 'There are over 20 controversial forest management projects that the Climate Forests coalition believe to be a threat to old-growth and mature forests. This list of projects compiled by the coalition of over 120 environmental organizations highlights ongoing disputes over the protection of the oldest trees across America.',
             location: {
                 center: [-103.771744, 38.585347],
-                zoom: 4.3,
+                zoom: 4.4,
                 pitch: 20,
                 bearing: 0,
                 speed: 1

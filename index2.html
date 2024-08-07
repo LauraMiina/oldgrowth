@@ -6,6 +6,13 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/mapbox/assembly/publisher-staging/src/svgs/mapbox.svg">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet">
+  
+  
     <style>
         body {
             margin: 0;
@@ -17,32 +24,38 @@
 
         header {
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(218, 236, 227, 0.8);
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 2;
         }
 
         header h1 {
+            font-family: 'Montserrat', Georgia;
             font-size: 2.5em;
+            line-height: 1;
             color: #184946;
         }
 
         header h2 {
-            font-size: 1.5em;
-            color: #555;
+            font-family: 'Montserrat', Georgia;
             font-style: italic;
+            font-size: 1.3em;
+            font-weight: 400;;
+            color: #555;
         }
 
         header p {
             font-size: 1em;
             color: #888;
+            font-style: italic;
+            font-family: 'Montserrat', Georgia;
         }
 
         #intro, #outro {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 2;
+            max-width: 640px;
+            margin: auto;
+            font-family: 'Crimsom Text', serif;
+            font-size: 20px;
+            margin-top: 20px;
         }
 
         #scrollytelling {
@@ -110,6 +123,17 @@
         .step img {
             width: 100%;
         }
+        .footer {
+      background: #d2e5dd;
+      text-align: center;
+      font-size: 1em;
+      margin-top: 2em;
+      padding: 4em 0;
+      font-family: 'Crimsom Text', serif;
+    }
+    a {
+      color: #104938f8;
+    }
 
         @media (max-width: 750px) {
             .centered, .lefty, .righty, .fully {
@@ -129,14 +153,15 @@
 <body>
 
 <header>
-    <h1>Old-growth Forests</h1>
-    <h2>Subhead</h2>
+    <h1>Fights for the Wilderness</h1>
+    <h2>President Joe Biden’s administration gave an order to protect the remaining old-growth forests, but environmentalists are still fighting the US Forest Service to stop logging projects threatening old forests around the country.</h2>
     <p>By Laura Kukkonen</p>
 </header>
 
 <section id="intro">
-    <p>Lorem ipsum</p>
-    <p>More lorem ipsum</p>
+    <p>We couldn't see him through the lush forest, but Zack Porter's voice carried over to us.</p>
+    <p>“Grandma maple!”</p>
+    <p>Porter had found it – the grand old tree in this tiny patch of old forest. His colleague Mark Nelson, with an 18-month-old rescue schnoodle, a mix of schnauzer and a poodle, Scout, walked with me over rocky and uneven terrain, brushing past bushes and branches, towards Porter’s voice.</p>
 </section>
 
 <section id="scrollytelling">
@@ -151,6 +176,10 @@
     <p>Additional lorem ipsum.</p>
     <p>Additional lorem ipsum and kicker</p>
 </section>
+
+<div class="footer">
+          <p>Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.</p>
+</div>
 
 <!-- JavaScript includes -->
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
