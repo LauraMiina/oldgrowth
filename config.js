@@ -20,7 +20,7 @@ var config = {
             alignment: 'centre',
             hidden: false,
             title: 'Historic counting of the trees',
-            description: 'Earlier this year, the US Forest Service published a historic inventory of all the mature and old-growth federal forests in the country. The inventory was done as part of an executive order by President Joe Biden´s administration in 2022 to “conserve America’s mature and old-growth forests on federal lands”.  The map shows where all these old forests are. The darker the colors, the more old woods there are inside a fireshed, an area of 250,000 acres related to the USFS´s role as a fire-prevention agency.',
+            description: 'President Joe Biden´s administration issued an executive order in 2022 to “conserve America’s mature and old-growth forests on federal lands”. The map shows where all these old forests are, based on a recent inventory by the U.S. Forest Service. The darker the colors, the more old woods there are inside a fireshed, an area of 250,000 acres related to the USFS´s role as a fire-prevention agency.',
             location: {
                 center: [-94.786879, 35.975403],
                 zoom: 4.2,
